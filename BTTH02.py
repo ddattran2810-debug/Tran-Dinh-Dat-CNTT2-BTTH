@@ -31,7 +31,7 @@ def display_books():
         print("Danh sách sách trống!")
         return
 
-    print("\nDANH SÁCH SÁCH")
+    print("\n===== DANH SÁCH SÁCH =====")
     for book in books:
         print(book)
 
@@ -77,13 +77,18 @@ def return_book():
 def delete_book():
     book_id = input("Nhập mã sách cần xóa: ")
 
-    for book in books:
-        if book["id"] == book_id:
-            books.remove(book)
-            print("Xóa sách thành công!")
-            return
+    index = -1
 
-    print("Mã sách không tồn tại!")
+    for i in range(len(books)):
+        if books[i]["id"] == book_id:
+            index = i
+            break
+
+    if index != -1:
+        del books[index]
+        print("Xóa sách thành công!")
+    else:
+        print("Mã sách không tồn tại!")
 
 
 def sort_books():
